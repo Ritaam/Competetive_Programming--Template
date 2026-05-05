@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// this is the optimized algorithm for findng Prime Number upto N
+// The time complexity of the Sieve of Eratosthenes is O(nloglogn))
 
 vector<int> sieveOfEratosthenes(int n) {
     
