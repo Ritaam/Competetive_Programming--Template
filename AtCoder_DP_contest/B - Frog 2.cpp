@@ -18,23 +18,27 @@ typedef vector<vi> vvi;
 #define setbits(x) __builtin_popcountll(x)
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
-//For each of the N days, we compute 3 DP states using constant-time operations. 
-//Therefore, the total time complexity is O(N).
-//  We store a DP table of size N × 3, so the space complexity is O(N). It can be optimized to O(1) by keeping
-//  only the previous day's values.
-void solve() {
-    int n;
-    cin >> n;
-    vvi dp(n+1 , vi(3));
-    for(int i = 1; i <= n; i++) {
-        int a,b,c;
-        cin >> a >> b >> c;
 
-        dp[i][0] = a + max(dp[i - 1][1], dp[i- 1][2]);
-        dp[i][1] = b + max(dp[i - 1][0],dp[i - 1][2]);
-        dp[i][2] = c + max(dp[i - 1][0], dp[i -1][1]);
+
+void solve() {
+    const int INF = 1e9;
+    int n,k;
+    cin >> n >> k;
+    vector<int> h(n);
+    for(auto &x : h) cin >> x;
+   // State Definition: Let dp[i] be the minimum total cost to reach stone i
+    vector<int> dp(n + 1, INF);
+    dp[0] = 0;
+    for(int  i = 0; i < n; i++) {
+        // Try all possible jump lengths from 1 to K
+        for(int j = 1; j <= k; j++) {
+            if(i + j < n) {
+                dp[i + j] = min(dp[i + j] , dp[i] + abs(h[i] - h[i + j]));
+            }
+        }
     }
-    cout << max({dp[n][0],dp[n][1],dp[n][2]}) << endl;
+    cout << dp[n - 1] << endl;
+
 }
 
 int main() {
