@@ -19,17 +19,33 @@ typedef vector<vi> vvi;
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
 
+
+
+
 void solve() {
-   
+    int n;
+    cin >> n;
+    vi a(n);
+    for(int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    vi d(n);
+    for(int i = 0; i < n; i++) {
+        d[i] = abs(a[i] - a[(i + 1) % n]);
+    }
+    sort(all(d));
+    cout << d[n - 2] << "\n";
 }
+
+
+
 
 int main() {
     RITAM
     int t;
-    cin >> t;
-    while (t--) {
-        solve();
-    }
-    //solve();
+   cin >> t;
+   while (t--) {
+       solve();
+   }
     return 0;
 }

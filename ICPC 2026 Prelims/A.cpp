@@ -20,7 +20,14 @@ typedef vector<vi> vvi;
 #define no cout << "NO\n"
 
 void solve() {
-   
+   int x,a,b;
+   cin >> x >> a >> b;
+
+   if(x < 80) {
+    cout << (80 -x) * a + 20 * b << endl;
+   } else {
+    cout << (100-x) * b << endl;
+   }
 }
 
 int main() {
@@ -30,6 +37,5 @@ int main() {
     while (t--) {
         solve();
     }
-    //solve();
     return 0;
 }
